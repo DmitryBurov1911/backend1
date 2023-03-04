@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+</head>
+<body>
+    <div id="message"></div>
+    <p>
+        Введите ваши контакты <br>
+        <input name="fio" id="fio">
+    </p>
+    <p>
+        Введите ваши требования <br>
+        <textarea name="email" id="email" cols="30" rows="10"></textarea>
+    </p>
+    <button onclick="send()">Отправить</button>
+    <script>
+        async function send(){
+            const fio = document.getElementById("fio").value;
+            const email = document.getElementById("email").value;
+
+            const respones = await fetch("/hello", {
+                method : "POST",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify({ 
+                    fio: fio,
+                    html_email: email,
+                })
+            });
+            if (respones.ok) {
+                const data = await respone.json();
+                document.getElementById("message").textContent = data.message;
+            }
+            else
+                console.log(response);
+        }
+    </script>
+</body>
+</html>
