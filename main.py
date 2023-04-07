@@ -10,8 +10,8 @@ def root():
     return FileResponse("MY_HTML/index.html")
 
 def send_mail(message):
-    sender = "sender887766@gmail.com"
-    password = "yoxsxgzfpxtqjjfw"
+    sender = "your email"
+    password = "your pass"
 
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.starttls()
